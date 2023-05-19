@@ -9,6 +9,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
 import * as fromBall from './store/ball.reducer';
 import {BallEffects} from './store/ball.effects';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {BallEffects} from './store/ball.effects';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
     StoreModule.forFeature(fromBall.ballFeatureKey, fromBall.reducer),
-    EffectsModule.forFeature([BallEffects])
+    EffectsModule.forFeature([BallEffects]),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

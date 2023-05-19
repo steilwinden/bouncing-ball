@@ -1,1 +1,21 @@
-<p>ball works!</p>
+<canvas id="ball-canvas" width="400" height="400"></canvas>
+<form [formGroup]="ballForm">
+  <div>
+    <label for="vx-input">VX:</label>
+    <input id="vx-input" type="number" formControlName="vx">
+    <div *ngIf="ballForm.get('vx')?.invalid">
+      <div *ngIf="ballForm.get('vx')?.hasError('required')">VX ist erforderlich.</div>
+      <div *ngIf="ballForm.get('vx')?.hasError('pattern')">VX muss eine positive ganze Zahl sein.</div>
+    </div>
+  </div>
+  <div>
+    <label for="vy-input">VY:</label>
+    <input id="vy-input" type="number" formControlName="vy">
+    <div *ngIf="ballForm.get('vy')?.invalid">
+      <div *ngIf="ballForm.get('vy')?.hasError('required')">VY ist erforderlich.</div>
+      <div *ngIf="ballForm.get('vy')?.hasError('pattern')">VY muss eine positive ganze Zahl sein.</div>
+    </div>
+  </div>
+</form>
+
+<button (click)="toggleBallMovement()">{{ ballRunning ? 'Stopp' : 'Start' }}</button>
