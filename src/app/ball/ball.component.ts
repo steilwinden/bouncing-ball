@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {select, Store} from "@ngrx/store";
-import {BallActions} from "../store/ball.actions";
+import * as BallActions from '../store/ball.actions';
 import {selectBallPosition} from "../store/ball.selectors";
-import {combineLatest, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {initialBallState} from "../store/ball.reducer";
 
 @Component({
@@ -23,9 +23,7 @@ export class BallComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    combineLatest([
-      this.store.pipe(select(selectBallPosition)),
-    ]).subscribe(([position]) => {
+    this.store.pipe(select(selectBallPosition)).subscribe((position) => {
       this.ballPosition = position;
       this.drawBall();
     });

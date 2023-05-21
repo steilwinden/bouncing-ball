@@ -1,9 +1,10 @@
-import {createActionGroup, emptyProps, props} from "@ngrx/store";
+import {createAction, props} from "@ngrx/store";
 
-export const BallActions = createActionGroup({
-  source: 'Ball',
-  events: {
-    'move ball': emptyProps(),
-    'set ball speed': props<{ vx: number, vy: number }>()
-  }
-});
+export const moveBall = createAction(
+  '[Ball] move ball'
+);
+
+export const setBallSpeed = createAction(
+  '[Ball] set ball speed',
+  props<{ vx: number, vy: number }>()
+);

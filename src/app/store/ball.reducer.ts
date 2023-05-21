@@ -1,6 +1,6 @@
-import {createFeature, createReducer, on} from '@ngrx/store';
-import {BallActions} from './ball.actions';
+import {createReducer, on} from '@ngrx/store';
 import {BallComponent} from "../ball/ball.component";
+import * as BallActions from './ball.actions';
 
 export const ballFeatureKey = 'ball';
 
@@ -51,7 +51,7 @@ export const reducer = createReducer(
   }),
 );
 
-export const ballFeature = createFeature({
-  name: ballFeatureKey,
-  reducer,
-});
+// export const ballFeature = createFeature({
+//   name: ballFeatureKey,
+//   reducer,
+// });

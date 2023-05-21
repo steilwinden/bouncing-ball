@@ -20,7 +20,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode(), actionsBlocklist: ['[Ball] move ball']}),
     EffectsModule.forRoot([]),
     StoreModule.forFeature(fromBall.ballFeatureKey, fromBall.reducer),
     EffectsModule.forFeature([BallEffects]),
@@ -29,4 +29,5 @@ import {ReactiveFormsModule} from '@angular/forms';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
