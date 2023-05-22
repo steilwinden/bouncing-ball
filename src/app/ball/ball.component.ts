@@ -12,10 +12,11 @@ import {initialBallState} from "../store/ball.reducer";
   styleUrls: ['./ball.component.scss']
 })
 export class BallComponent implements OnInit, OnDestroy {
-  ballPosition!: { x: number; y: number };
+
+  ballPosition: { x: number; y: number } = {x: initialBallState.x, y: initialBallState.y};
   animationId = 0;
   ballForm: FormGroup = new FormGroup({}); // FormGroup für das Formular
-  subscription!: Subscription;
+  subscription?: Subscription;
   static RADIUS = 20;
   static CANVAS_SIZE = 400;
 
@@ -23,7 +24,7 @@ export class BallComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.store.pipe(select(selectBallPosition)).subscribe((position) => {
+    this.subscription = this.store.pipe(select(selectBallPosition)).subscribe((position) => {
       this.ballPosition = position;
       this.drawBall();
     });
@@ -69,6 +70,6 @@ export class BallComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 }
