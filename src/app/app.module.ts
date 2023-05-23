@@ -10,7 +10,7 @@ import {EffectsModule} from '@ngrx/effects';
 import * as fromBall from './store/ball.reducer';
 import {BallEffects} from './store/ball.effects';
 import {ReactiveFormsModule} from '@angular/forms';
-import {StoreRouterConnectingModule} from '@ngrx/router-store';
+import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({router: routerReducer}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode(), actionsBlocklist: ['[Ball] move ball']}),
     EffectsModule.forRoot([]),
     StoreModule.forFeature(fromBall.ballFeatureKey, fromBall.reducer),
