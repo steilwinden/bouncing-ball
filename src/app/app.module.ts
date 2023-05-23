@@ -10,6 +10,7 @@ import {EffectsModule} from '@ngrx/effects';
 import * as fromBall from './store/ball.reducer';
 import {BallEffects} from './store/ball.effects';
 import {ReactiveFormsModule} from '@angular/forms';
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     EffectsModule.forRoot([]),
     StoreModule.forFeature(fromBall.ballFeatureKey, fromBall.reducer),
     EffectsModule.forFeature([BallEffects]),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
